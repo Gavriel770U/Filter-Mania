@@ -1,7 +1,7 @@
 # Filter-Mania
 Set of various interesting and funny filters made in C and C++ using ofGraphics.
 
-Filters available:
+### Filters available:
 *  RGB negate (RGB -> 255-RGB)
 *  Grayscale
 *  Rainbow flag
