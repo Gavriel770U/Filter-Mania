@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include "imageProcessing.h"
 
@@ -377,7 +377,32 @@ void processFilterPixelation(unsigned char* in, unsigned char* out, int width, i
 
 bool isBlueish(Pixel pixel)
 {
-	return (pixel.blue >= 100 && pixel.blue >= 2.3*pixel.red && pixel.blue >= 2.3*pixel.green);
+	float r = pixel.red / 255.0f;
+	float g = pixel.green / 255.0f;
+	float b = pixel.blue / 255.0f;
+
+	float cmax = fmaxf(r, fmaxf(g, b));
+	float cmin = fminf(r, fminf(g, b));
+	float delta = cmax - cmin;
+
+	float hue = 0.0f;
+	if (delta != 0)
+	{
+		if (cmax == r)
+			hue = fmodf((g - b) / delta, 6.0f);
+		else if (cmax == g)
+			hue = (b - r) / delta + 2.0f;
+		else
+			hue = (r - g) / delta + 4.0f;
+	}
+
+	hue *= 60.0f;
+
+	float saturation = (cmax != 0) ? (delta / cmax) : 0;
+
+	float value = cmax;
+
+	return (hue >= 200.0f && hue <= 260.0f && saturation >= 0.5f && value >= 0.5f);
 }
 
 void processFilterWriteWithBlue(unsigned char* in, unsigned char* out, int width, int height)
@@ -636,6 +661,31 @@ void processFilterStickmanWorld(unsigned char* in, unsigned char* out, int width
 	int j = 0;
 
 	stickmanWorldFill(pixels, width, height);
+
+	for (i = 0; i < height; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			out[(i * width + j) * RGB_COLORS_AMOUNT] = pixels[i][j].red;
+			out[(i * width + j) * RGB_COLORS_AMOUNT + RGB_GREEN_INC] = pixels[i][j].green;
+			out[(i * width + j) * RGB_COLORS_AMOUNT + RGB_BLUE_INC] = pixels[i][j].blue;
+		}
+	}
+
+	freePixelArray(pixels, height);
+}
+
+static void addTriangleBorder(Pixel** pixels, int width, int height)
+{
+	
+}
+
+void processFilterTrianlge(unsigned char* in, unsigned char* out, int width, int height)
+{
+	Pixel** pixels = createPixelArray(in, width, height);
+	int i = 0;
+	int j = 0;
+
 
 	for (i = 0; i < height; i++)
 	{

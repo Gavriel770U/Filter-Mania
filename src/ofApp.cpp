@@ -47,11 +47,12 @@ void ofApp::update(){
         //processFilterIsrael(pixels, videoOutputBuffer, camWidth, camHeight);
         //processFilterFlip(pixels, videoOutputBuffer, camWidth, camHeight);
         //processFilterPixelation(pixels, videoOutputBuffer, camWidth, camHeight);
-        //processFilterWriteWithBlue(pixels, videoOutputBuffer, camWidth, camHeight);
+        processFilterWriteWithBlue(pixels, videoOutputBuffer, camWidth, camHeight);
         //processFilterTriangleFlip(pixels, videoOutputBuffer, camWidth, camHeight);
         //processFilterDarkFrame(pixels, videoOutputBuffer, camWidth, camHeight);
         //processFilterWhiteBottomGlow(pixels, videoOutputBuffer, camWidth, camHeight);
-        processFilterStickmanWorld(pixels, videoOutputBuffer, camWidth, camHeight);
+        //processFilterStickmanWorld(pixels, videoOutputBuffer, camWidth, camHeight);
+       // processFilterTrianlge(pixels, videoOutputBuffer, camWidth, camHeight);
 		videoTexture.loadData(videoOutputBuffer, camWidth, camHeight, GL_RGB);
     }    
 }

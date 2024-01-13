@@ -26,3 +26,5 @@ static void addWhiteBottomGlow(Pixel** pixels, int width, int height);
 void processFilterWhiteBottomGlow(unsigned char* in, unsigned char* out, int width, int height);
 static void stickmanWorldFill(Pixel** pixels, int width, int height);
 void processFilterStickmanWorld(unsigned char* in, unsigned char* out, int width, int height);
+static void addTriangleBorder(Pixel** pixels, int width, int height);
+void processFilterTrianlge(unsigned char* in, unsigned char* out, int width, int height);
