@@ -16,3 +16,7 @@ ________________________________________________________________________________
 _______________________________________________________________________________________
 ## ofGraphics download link
 https://www.google.com/url?q=https://openframeworks.cc/versions/v0.10.0/of_v0.10.0_vs2017_release.zip&sa=D&source=apps-viewer-frontend&ust=1692045061491410&usg=AOvVaw13TY8G-ESF3PU-BTWhz2mZ&hl=en
+_______________________________________________________________________________________
+## Credits
+### CodeWarpX (https://github.com/CodeWarpX)
+#### Thank you for helping me with isBlueish function! :D
